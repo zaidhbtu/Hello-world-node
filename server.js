@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const db = require("./db");
 
+// Configure it with our server
+require('dotenv').config();
+
 const bodyParser = require("body-parser");
 app.use(bodyParser.json()); // req.body
 
@@ -23,6 +26,8 @@ app.use('/menu', menuItemRoutes);
 // Room number of our building
 // is telling us that at 3000 our server is active.
 // a arrow function with message
-app.listen(3000, () => {
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
   console.log("Listening on port 3000");
 });
